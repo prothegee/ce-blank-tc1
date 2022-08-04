@@ -25,11 +25,29 @@ add_sources("Code_uber.cpp"
 		"StdAfx.h"
 )
 
+add_sources("game_uber.cpp"
+    PROJECTS Game
+    SOURCE_GROUP "game"
+		"game/GConfig.h"
+)
+
+add_sources("game_system_uber.cpp"
+    PROJECTS Game
+    SOURCE_GROUP "game/system"
+		"game/system/SLevelManager.h"
+)
+
 add_sources("player_uber.cpp"
     PROJECTS Game
     SOURCE_GROUP "player"
 		"player/PlayerCore.cpp"
 		"player/PlayerCore.h"
+)
+
+add_sources("tools_uber.cpp"
+    PROJECTS Game
+    SOURCE_GROUP "tools"
+		"tools/DateAndTime.h"
 )
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/CVarOverrides.h")
