@@ -1,0 +1,10 @@
+<AssetMetadata version="0" type="Texture" guid="9fe9cc14-9ed8-40f3-e232-cb7f07a4b3f5" source="env-prob-night-01_cm.tif">
+ <Files>
+  <File path="env-prob-night-01_cm.dds"/>
+ </Files>
+ <Details>
+  <Detail name="width">1536</Detail>
+  <Detail name="height">256</Detail>
+  <Detail name="mipCount">7</Detail>
+ </Details>
+</AssetMetadata>

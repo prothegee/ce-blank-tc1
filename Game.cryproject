@@ -1,0 +1,36 @@
+{
+	"version": 4,
+	"type": "",
+	"info": {
+		"name": "CE-BLANK-TC1",
+		"guid": "37fa23f4-983d-4ba8-b5bc-348d381fd574"
+	},
+	"content": {
+		"assets": [ "Assets" ],
+		"code": [ "Code" ],
+		"libs": [
+			{
+				"name": "CE-BLANK-TC1",
+				"shared": { "any": "", "win_x64": "", "win_x86": "" }
+			}
+		]
+	},
+	"require": {
+		"engine": "engine-5.7",
+		"plugins": [
+			{ "guid": "", "type": "EType::Native", "path": "CryDefaultEntities" },
+			{ "guid": "", "type": "EType::Native", "path": "CryScaleformSchematyc" },
+			{ "guid": "", "type": "EType::Native", "path": "CrySensorSystem" },
+			{ "guid": "", "type": "EType::Native", "path": "CryPerceptionSystem" },
+			{ "guid": "", "type": "EType::Native", "path": "bin/win_x64/Game.dll" },
+			{
+				"guid": "",
+				"type": "EType::Native",
+				"path": "CryGamePlatform",
+				"platforms": [ "PS4" ]
+			}
+		]
+	},
+	"console_variables": { "sys_target_platforms": "pc,ps4,xboxone,linux" },
+	"console_commands": { }
+}

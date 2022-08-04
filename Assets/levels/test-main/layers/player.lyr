@@ -1,0 +1,26 @@
+<ObjectLayer>
+ <Layer Name="player" FullName="player" GUID="845fe9f5-8a68-b893-dc4c-a223dec06383" Hidden="0" Frozen="0" Expanded="0" Type="0" Exportable="1" ExportLayerPak="1" DefaultLoaded="0" HavePhysics="1" IsDefaultColor="1" Color="4671303" Timestamp="1659636993">
+  <LayerObjects>
+   <Object Type="Entity" Layer="player" LayerGUID="845fe9f5-8a68-b893-dc4c-a223dec06383" Id="1edcddae-7412-241d-bb72-a178ab81a65e" Name="schematycs::entities::player-1" Pos="64,64,32" Rotate="1,0,0,0" Scale="1,1,1" ColorRGB="65535" UseCustomLevelLayerColor="0" MinSpec="0" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" DynamicDistanceShadows="0" GIMode="0" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" EntityClass="schematyc::schematycs::entities::player" ClassGUID="29f22d1d-bad4-45ba-98d9-e32d83dbe0b8" HasEntity="1">
+    <Properties />
+    <SchematycProperties CryXmlVersion="2">
+     <components>
+      <element key="2bb0d621-4ede-42d4-ae62-7388a73c1933">
+       <value overridePolicy="Default"/>
+      </element>
+      <element key="da415201-e097-4657-ba78-22f3f353731b">
+       <value overridePolicy="Default"/>
+      </element>
+      <element key="2b299cb9-e5f5-488e-be61-6ab79d5d3130">
+       <value overridePolicy="Default"/>
+      </element>
+      <element key="02923d25-431f-4f2a-8629-f1a0f302c33a">
+       <value overridePolicy="Default"/>
+      </element>
+     </components>
+     <variables />
+    </SchematycProperties>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

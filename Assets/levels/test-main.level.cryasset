@@ -1,0 +1,32 @@
+<AssetMetadata version="0" type="Level" guid="7037d3c1-3174-7f9a-3ab5-02cc43e15866" source="" timestamp="1659637666">
+ <Files>
+  <File path="test-main/test-main.level"/>
+ </Files>
+ <Dependencies>
+  <Path usageCount="1">%ENGINE%/EngineAssets/Shading/default.env</Path>
+  <Path>%editor%/objects/envcube.cgf</Path>
+  <Path>%editor%/objects/envcube.mtl</Path>
+  <Path>%engine%/engineassets/icons/averagememoryusage.dds</Path>
+  <Path>%engine%/engineassets/icons/highmemoryusage.dds</Path>
+  <Path>%engine%/engineassets/icons/livepreview.dds</Path>
+  <Path>%engine%/engineassets/icons/lowmemoryusage.dds</Path>
+  <Path>%engine%/engineassets/materials/fog/fogvolumebox.mtl</Path>
+  <Path>%engine%/engineassets/materials/fog/fogvolumeellipsoid.mtl</Path>
+  <Path>%engine%/engineassets/materials/fog/oceaninto.mtl</Path>
+  <Path>%engine%/engineassets/materials/fog/oceanintolowspec.mtl</Path>
+  <Path>%engine%/engineassets/materials/fog/oceanoutof.mtl</Path>
+  <Path>%engine%/engineassets/materials/fog/oceanoutoflowspec.mtl</Path>
+  <Path>%engine%/engineassets/materials/material_terrain_default.mtl</Path>
+  <Path>%engine%/engineassets/materials/water/ocean_default.mtl</Path>
+  <Path>%engine%/engineassets/materials/water/wateroceanbottom.mtl</Path>
+  <Path>%engine%/engineassets/objects/primitive_sphere.cgf</Path>
+  <Path>%engine%/engineassets/texturemsg/defaultnouvs.dds</Path>
+  <Path>%engine%/engineassets/textures/grey.dds</Path>
+  <Path>%engine%/engineassets/textures/skys/night/half_moon.dds</Path>
+  <Path>editor/resourcecache/textures/cubemaps/test-main/env-prob-night-01_cm.dds</Path>
+  <Path>editor/resourcecache/textures/cubemaps/test-main/env-prob-night-01_cm_diff.dds</Path>
+  <Path usageCount="1">libs/environmentpresets/night-01-env.env</Path>
+  <Path>textures/cubemaps/test-main/env-prob-night-01_cm.dds</Path>
+  <Path>textures/cubemaps/test-main/env-prob-night-01_cm_diff.dds</Path>
+ </Dependencies>
+</AssetMetadata>
