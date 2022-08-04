@@ -1,5 +1,14 @@
 // project precompile header
 #pragma once
+#include <iostream>
+#include <string>
+
+#include <array>
+#include <numeric>
+#include <chrono>
+#include <iomanip>
+#include <sstream>
+
 #include "StdAfx.h"
 #include "GamePlugin.h"
 

@@ -5,21 +5,21 @@ static void RegistPlayerCore(Schematyc::IEnvRegistrar& registrar)
 {
     Schematyc::CEnvRegistrationScope scope = registrar.Scope(IEntity::GetEntityScopeGUID());
     {
-        Schematyc::CEnvRegistrationScope componentScope = scope.Register(SCHEMATYC_MAKE_ENV_COMPONENT(PlayerCore));
+        Schematyc::CEnvRegistrationScope componentScope = scope.Register(SCHEMATYC_MAKE_ENV_COMPONENT(player::PlayerCore));
     }
 }
 CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegistPlayerCore);
-PlayerCore::PlayerCore(/* args */)
+player::PlayerCore::PlayerCore(/* args */)
 {
 }
-PlayerCore::~PlayerCore()
+player::PlayerCore::~PlayerCore()
 {
 }
 
 
 
 
-void PlayerCore::Initialize()
+void player::PlayerCore::Initialize()
 {
     m_pInput = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CInputComponent>();
     m_pCC = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CCharacterControllerComponent>();
@@ -28,7 +28,7 @@ void PlayerCore::Initialize()
 }
 
 
-Cry::Entity::EventFlags PlayerCore::GetEventMask() const
+Cry::Entity::EventFlags player::PlayerCore::GetEventMask() const
 {
     return
         Cry::Entity::EEvent::GameplayStarted |
@@ -38,13 +38,21 @@ Cry::Entity::EventFlags PlayerCore::GetEventMask() const
 }
 
 
-void PlayerCore::ProcessEvent(const SEntityEvent& e)
+void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
 {
     switch (e.event)
     {
         case Cry::Entity::EEvent::GameplayStarted:
         {
             InitializePlayerInput();
+
+            #ifndef NDEBUG
+            CryLog("# current map/level name: %s", game::system::SLevelManager::GetCurrentLevel().c_str());
+            CryLog("# current time: %s", current_time_utc.c_str());
+            CryLog("# game version: v%s", GetProjectVersion());
+            CryLog("# spawn on camera: %s", m_spawnOnCamera ? "true" : "false");
+            #else
+            #endif
         }
         break;
 
@@ -53,7 +61,6 @@ void PlayerCore::ProcessEvent(const SEntityEvent& e)
             InitializePlayerInput();
 
             #ifndef NDEBUG
-            CryLog("# m_spawnOnCamera: %s", m_spawnOnCamera ? "true" : "false");
             #else
             #endif
         }
@@ -73,7 +80,7 @@ void PlayerCore::ProcessEvent(const SEntityEvent& e)
 
 
 
-void PlayerCore::InitializePlayerInput()
+void player::PlayerCore::InitializePlayerInput()
 {
     #pragma region input register and binding
     // move forward
@@ -174,7 +181,7 @@ void PlayerCore::InitializePlayerInput()
 }
 
 
-void PlayerCore::ResetPlayerInput()
+void player::PlayerCore::ResetPlayerInput()
 {
     m_mouseDeltaRotation = ZERO;
     m_entityDeltaRotation = ZERO;
@@ -184,7 +191,7 @@ void PlayerCore::ResetPlayerInput()
 }
 
 
-void PlayerCore::HandleInputFlagChange(CEnumFlags<EInputFlag> flags, CEnumFlags<EActionActivationMode> activationMode, EInputFlagType type)
+void player::PlayerCore::HandleInputFlagChange(CEnumFlags<EInputFlag> flags, CEnumFlags<EActionActivationMode> activationMode, EInputFlagType type)
 {
     switch (type)
     {
@@ -215,7 +222,7 @@ void PlayerCore::HandleInputFlagChange(CEnumFlags<EInputFlag> flags, CEnumFlags<
 
 
 
-void PlayerCore::GroundMovementHandler(float dt)
+void player::PlayerCore::GroundMovementHandler(float dt)
 {
     if (!m_pCC->IsOnGround()) { return; }
 
@@ -243,7 +250,7 @@ void PlayerCore::GroundMovementHandler(float dt)
 }
 
 
-void PlayerCore::OrientHandler(float dt)
+void player::PlayerCore::OrientHandler(float dt)
 {
     #pragma region camera v1 section
     // camera entity world tranformation

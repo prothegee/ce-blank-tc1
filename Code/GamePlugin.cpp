@@ -43,7 +43,7 @@ void CGamePlugin::OnSystemEvent(ESystemEvent event, UINT_PTR wparam, UINT_PTR lp
 			{
 				// Load the example map in client server mode
 				gEnv->pConsole->ExecuteString("map test-main", false, true);
-                gEnv->pConsole->ExecuteString("level.toggle_display_info 0", false, true);
+                // gEnv->pConsole->ExecuteString("level.toggle_display_info 0", false, true); // nani?!
 			}
 		}
 		break;
@@ -71,6 +71,24 @@ void CGamePlugin::OnSystemEvent(ESystemEvent event, UINT_PTR wparam, UINT_PTR lp
 			}
 		}
 		break;
+
+        case ESYSTEM_EVENT_LEVEL_LOAD_START:
+        {
+            #ifndef NDEBUG
+            CryLog("# CGamePlugin ESYSTEM_EVENT_LEVEL_LOAD_START");
+            #else
+            #endif
+        }
+        break;
+
+        case ESYSTEM_EVENT_LEVEL_LOAD_END:
+        {
+            #ifndef NDEBUG
+            CryLog("# CGamePlugin ESYSTEM_EVENT_LEVEL_LOAD_END");
+            #else
+            #endif
+        }
+        break;
 	}
 }
 
