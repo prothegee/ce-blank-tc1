@@ -26,5 +26,19 @@ tbd
 
 ---
 
+## what inside
+
+- movement logic:
+    ```
+    # keyboard & mouse
+    - move
+    - sprint
+    - jump
+    ```
+
+<br>
+
+---
+
 ###### end of readme
 
