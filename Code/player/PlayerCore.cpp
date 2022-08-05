@@ -75,6 +75,7 @@ void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
             OrientHandler(dt);
 
             PlayerStateConditions();
+            PlayerDataPolicies(dt);
         }
         break;
     }
@@ -180,6 +181,87 @@ void player::PlayerCore::InitializePlayerInput()
             "mouse-rotate-pitch",
             EActionInputDevice::eAID_KeyboardMouse,
             EKeyId::eKI_MouseY);
+
+    // sprint
+    m_pInput->RegisterAction(
+        "player",
+        "sprint",
+        [this](int activationMode, float value)
+        {
+            HandleInputFlagChange(
+                EInputFlag::DoSprint,
+                (EActionActivationMode)activationMode);
+        });
+        m_pInput->BindAction(
+            "player",
+            "sprint",
+            EActionInputDevice::eAID_KeyboardMouse,
+            EKeyId::eKI_LShift);
+
+    // jump
+    m_pInput->RegisterAction(
+        "player",
+        "jump",
+        [this](int activationMode, float value)
+        {
+            HandleInputFlagChange(
+                EInputFlag::DoJump,
+                (EActionActivationMode)activationMode);
+        });
+        m_pInput->BindAction(
+            "player",
+            "jump",
+            EActionInputDevice::eAID_KeyboardMouse,
+            EKeyId::eKI_Space);
+
+    // shot
+    m_pInput->RegisterAction(
+        "player",
+        "shoot",
+        [this](int activationMode, float value)
+        {
+            if (activationMode == eAAM_OnPress)
+            {
+                #ifndef NDEBUG
+                CryLog("# shoot");
+                #else
+                #endif
+            }
+        });
+        m_pInput->BindAction(
+            "player",
+            "shoot",
+            EActionInputDevice::eAID_KeyboardMouse,
+            EKeyId::eKI_Mouse1);
+
+    // aim
+    m_pInput->RegisterAction(
+        "player",
+        "aim",
+        [this](int activationMode, float value)
+        {
+            if (activationMode == eAAM_OnPress)
+            {
+                if (m_aimStance)
+                {
+                    m_aimStance = false;
+                }
+                else
+                {
+                    m_aimStance = true;
+                }
+
+                #ifndef NDEBUG
+                CryLog("# m_aimStance %s", m_aimStance ? "true" : "false");
+                #else
+                #endif
+            }
+        });
+        m_pInput->BindAction(
+            "player",
+            "aim",
+            EActionInputDevice::eAID_KeyboardMouse,
+            EKeyId::eKI_Mouse2);
     #pragma endregion
 }
 
@@ -231,6 +313,7 @@ void player::PlayerCore::GroundMovementHandler(float dt)
 
     Vec3 velocity = ZERO;
 
+    #pragma region base movement
     if (m_inputFlags & EInputFlag::MoveLeft)
     {
         velocity.x -= m_movementSpeed * dt;
@@ -247,9 +330,74 @@ void player::PlayerCore::GroundMovementHandler(float dt)
     {
         velocity.y -= m_movementSpeed * dt;
     }
+    #pragma endregion
 
 
-    m_pCC->AddVelocity(GetEntity()->GetWorldRotation() * velocity);
+    #pragma region jump
+    float tmpjumpcharge = 0.0f; // temporal jump charge
+    /**
+     * this jump logic had consequence to be a bit delay since using charge jump
+     */
+    if (m_inputFlags & EInputFlag::DoJump)
+    {
+        m_jumpDurationOnHold += 1.f * dt;
+
+        (m_jumpDurationOnHold >= m_minJumpCharge)
+            ?   
+                tmpjumpcharge = m_jumpDurationOnHold,
+                m_canJumpNow = true,
+                m_stamina -= m_staminaReductionRate * dt
+            :   
+                tmpjumpcharge = 1.f,
+                m_canJumpNow = true,
+                m_stamina -= m_staminaReductionRate * dt;
+
+        (tmpjumpcharge >= m_maxJumpCharge)
+            ? m_jumpCharge = m_maxJumpCharge
+            : m_jumpCharge = tmpjumpcharge;
+    }
+    else
+    {
+        m_jumpDurationOnHold = 0.f;
+    }
+
+    if (m_canJumpNow && m_jumpDurationOnHold == 0.0f && m_stamina >= m_staminaMinValue)
+    {
+        if (m_pCC->IsOnGround())
+        {
+            m_pCC->AddVelocity(Vec3(0, 0, ((m_jumpForce * m_jumpCharge) * m_jumpChargeMultiplier)));
+        }
+
+        // reset
+        m_canJumpNow = false;
+        m_jumpDurationOnHold = 0.0f;
+        m_jumpCharge = 0.0f;
+        m_jumpChargeMultiplier = DVPlayerCore::m_jumpChargeMultiplier;
+        tmpjumpcharge = 0.0f;
+    }
+    #pragma endregion
+
+
+    #pragma region sprint
+    if (m_inputFlags & EInputFlag::DoSprint)
+    {
+        m_aimStance = false; // break the aim stance
+        
+
+        if (m_stamina > m_staminaMinValue)
+            m_pCC->AddVelocity(GetEntity()->GetWorldRotation() * (velocity * DVPlayerCore::m_sprintMultiplier));
+
+            // reduce stamina when sprint
+            if (m_pCC->GetVelocity() != Vec3(0, 0, 0))
+            {
+                m_stamina -= m_staminaReductionRate * dt;
+            }
+    }
+    else
+    {
+        m_pCC->AddVelocity(GetEntity()->GetWorldRotation() * velocity);
+    }
+    #pragma endregion
 }
 
 
@@ -325,4 +473,25 @@ void player::PlayerCore::PlayerSpawnConditions()
     }
 
     m_pEntity->SetWorldTM(spawnPointTranformation);
+}
+
+
+void player::PlayerCore::PlayerDataPolicies(float dt)
+{
+    // health
+    if (m_health <= m_healthToRegenerate)
+    {
+        m_health += m_healthRegenerationRate * dt;
+    }
+
+    // stamina
+    if (m_stamina < m_staminaMaxValue)
+    {
+        m_stamina += m_staminaRegenerationRate * dt;
+    }
+
+    // aim stance
+    (m_aimStance)
+        ? m_movementSpeed = DVPlayerCore::m_movementSpeed/2
+        : m_movementSpeed = DVPlayerCore::m_movementSpeed;
 }

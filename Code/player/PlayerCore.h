@@ -29,6 +29,9 @@ class PlayerCore
         static constexpr float m_health = 100.0f;
         static constexpr float m_stamina = 100.0f;
         static constexpr float m_movementSpeed = 50.0f;
+        static constexpr float m_jumpForce = 6.0f;
+        static constexpr float m_jumpChargeMultiplier = 1.0f;
+        static constexpr float m_sprintMultiplier = 1.75f;
         
         static constexpr float m_sensitivity = 1.0f;
         static constexpr float m_rotationLimitsMinPitch = -0.85f;
@@ -61,16 +64,35 @@ private:
     // player out of stamina state
     bool m_isOutOfStamina = false;
 
+    // player state able to trigger jump since using charge logic
+    bool m_canJumpNow = false;
 
-    // condition where spawn on camera when on editor only. status: POSTPONE.
+    // player aim stance state
+    bool m_aimStance = false;
+
+
+    // condition where spawn on camera when on editor only
     bool m_spawnOnCamera = [](){ return (gEnv->IsEditor()) ? true : false; }();
 
 
+    float m_jumpCharge = 0.0f;
+    float m_jumpDurationOnHold = 0.0f;
+    float m_jumpChargeMultiplier = 0.0f;
+
+    const float m_minJumpCharge = 0.3f;
+    const float m_maxJumpCharge = 3.0f;
+
+    const float m_healthToRegenerate = 50.0f;
     const float m_healthMinValue = 0.000f;
     const float m_healthMaxValue = 100.000f;
 
     const float m_staminaMinValue = 0.000f;
     const float m_staminaMaxValue = 100.000f;
+
+    const float m_healthRegenerationRate = 7.5f;
+
+    const float m_staminaReductionRate = 30.0f;
+    const float m_staminaRegenerationRate = 15.0f;
 
 private:
     // to determine to set some state of player
@@ -78,6 +100,9 @@ private:
 
     // spawn point condition when gameplay started
     void PlayerSpawnConditions();
+
+    // act as a guard player data member
+    void PlayerDataPolicies(float dt);
 
 
 public:
@@ -151,6 +176,9 @@ protected:
     
     // player movement speed
     Schematyc::Range<0, 100, 0, 100, float> m_movementSpeed = DVPlayerCore::m_movementSpeed;
+
+    // player movement speed
+    Schematyc::Range<0, 100, 0, 100, float> m_jumpForce = DVPlayerCore::m_jumpForce;
 
     // player sensitivity controller
     Schematyc::Range<0, 100, 0, 100, float> m_sensitivity = DVPlayerCore::m_sensitivity;
