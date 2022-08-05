@@ -12,16 +12,16 @@ namespace game
  * some rule of gameplay or data may be from this game config class
  * 
  */
-class GConfig
+class Config
 {
 public:
-    const uint m_major = 0; // major versioning
-    const uint m_minor = 0; // minor versioning
-    const uint m_patch = 0; // patch versioning
+    const static uint m_major = 0; // major versioning
+    const static uint m_minor = 0; // minor versioning
+    const static uint m_patch = 0; // patch versioning
 
 
-    GConfig(/* args */) = default;
-    virtual ~GConfig() = default;
+    Config(/* args */);
+    virtual ~Config();
 
 
     /**
@@ -29,7 +29,7 @@ public:
      * 
      * @return string - not std::sring
      */
-    string GetProjectVersion() const
+    const static string GetProjectVersion()
     {
         string retval;
 

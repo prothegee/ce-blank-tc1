@@ -1,4 +1,4 @@
-<AssetMetadata version="0" type="Level" guid="7037d3c1-3174-7f9a-3ab5-02cc43e15866" source="" timestamp="1659647021">
+<AssetMetadata version="0" type="Level" guid="7037d3c1-3174-7f9a-3ab5-02cc43e15866" source="" timestamp="1659698097">
  <Files>
   <File path="test-main/test-main.level"/>
  </Files>
@@ -21,6 +21,7 @@
   <Path>%engine%/engineassets/materials/water/wateroceanbottom.mtl</Path>
   <Path>%engine%/engineassets/objects/primitive_sphere.cgf</Path>
   <Path>%engine%/engineassets/texturemsg/defaultnouvs.dds</Path>
+  <Path>%engine%/engineassets/texturemsg/defaultsolids.mtl</Path>
   <Path>%engine%/engineassets/textures/grey.dds</Path>
   <Path>%engine%/engineassets/textures/skys/night/half_moon.dds</Path>
   <Path>editor/resourcecache/textures/cubemaps/test-main/env-prob-night-01_cm.dds</Path>

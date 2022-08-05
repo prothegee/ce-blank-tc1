@@ -28,13 +28,14 @@ add_sources("Code_uber.cpp"
 add_sources("game_uber.cpp"
     PROJECTS Game
     SOURCE_GROUP "game"
-		"game/GConfig.h"
+		"game/Config.cpp"
+		"game/Config.h"
 )
 
 add_sources("game_system_uber.cpp"
     PROJECTS Game
     SOURCE_GROUP "game/system"
-		"game/system/SLevelManager.h"
+		"game/system/LevelManager.h"
 )
 
 add_sources("player_uber.cpp"

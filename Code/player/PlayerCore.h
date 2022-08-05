@@ -1,7 +1,7 @@
 #pragma once
 #include "project.h"
-#include "game/GConfig.h"
-#include "game/system/SLevelManager.h"
+#include "game/Config.h"
+#include "game/system/LevelManager.h"
 #include "tools/DateAndTime.h"
 
 
@@ -20,7 +20,7 @@ namespace player
  */
 class PlayerCore
     :   public IEntityComponent
-    ,   game::GConfig
+    ,   game::Config
     ,   tools::DateAndTime
 {
     // default value for player core
@@ -49,12 +49,35 @@ class PlayerCore
         MoveRight    = 1 << 1,
         MoveForward  = 1 << 2,
         MoveBackward = 1 << 3,
+        DoSprint     = 1 << 4,
+		DoJump       = 1 << 5,
     };
 
 
 private:
-    // condition where spawn on camera when oon editor only. status: POSTPONE.
+    // player died state
+    bool m_isDied = false;
+    
+    // player out of stamina state
+    bool m_isOutOfStamina = false;
+
+
+    // condition where spawn on camera when on editor only. status: POSTPONE.
     bool m_spawnOnCamera = [](){ return (gEnv->IsEditor()) ? true : false; }();
+
+
+    const float m_healthMinValue = 0.000f;
+    const float m_healthMaxValue = 100.000f;
+
+    const float m_staminaMinValue = 0.000f;
+    const float m_staminaMaxValue = 100.000f;
+
+private:
+    // to determine to set some state of player
+    void PlayerStateConditions();
+
+    // spawn point condition when gameplay started
+    void PlayerSpawnConditions();
 
 
 public:
@@ -67,6 +90,7 @@ public:
         desc.SetLabel("player core component");
         desc.SetEditorCategory("_players");
         desc.SetDescription("player core component");
+        #pragma region data member
         desc.AddMember(
             &PlayerCore::m_health,
             'hlth',
@@ -109,6 +133,7 @@ public:
             "rotation max pitch",
             "rotation max pitch value",
             1.6f);
+        #pragma endregion
         
     }
 

@@ -8,11 +8,11 @@ namespace system
 {
 
 
-class SLevelManager
+class LevelManager
 {
 public:
-    SLevelManager(/* args */) = default;
-    virtual ~SLevelManager() = default;
+    LevelManager(/* args */) = default;
+    virtual ~LevelManager() = default;
 
 
     /**
