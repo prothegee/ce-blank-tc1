@@ -1,4 +1,4 @@
-// project precompile header
+// project precompile header, some header may stricly required only to cc/cpp file
 #pragma once
 #include <iostream>
 #include <string>
@@ -16,6 +16,7 @@
 #include <CrySchematyc/Utils/SharedString.h>
 #include <CrySchematyc/Utils/StackString.h> // things this type do?
 #include <CrySchematyc/MathTypes.h>
+#include <CrySchematyc/ResourceTypes.h>
 
 #include <CryCore/StaticInstanceList.h>
 #include <CrySchematyc/Env/IEnvRegistrar.h>
@@ -30,3 +31,6 @@
 #include <DefaultComponents/Geometry/AnimatedMeshComponent.h>
 #include <DefaultComponents/Geometry/BaseMeshComponent.h>
 #include <DefaultComponents/Geometry/StaticMeshComponent.h>
+
+#include <CryPhysics/physinterface.h>
+#include <CryRenderer/IRenderAuxGeom.h>

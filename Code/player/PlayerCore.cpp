@@ -45,9 +45,10 @@ void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
         case Cry::Entity::EEvent::GameplayStarted:
         {
             InitializePlayerInput();
+            PlayerSpawnConditions();
 
             #ifndef NDEBUG
-            CryLog("# current map/level name: %s", game::system::SLevelManager::GetCurrentLevel().c_str());
+            CryLog("# current map/level name: %s", game::system::LevelManager::GetCurrentLevel().c_str());
             CryLog("# current time: %s", current_time_utc.c_str());
             CryLog("# game version: v%s", GetProjectVersion());
             CryLog("# spawn on camera: %s", m_spawnOnCamera ? "true" : "false");
@@ -72,6 +73,8 @@ void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
 
             GroundMovementHandler(dt);
             OrientHandler(dt);
+
+            PlayerStateConditions();
         }
         break;
     }
@@ -289,4 +292,37 @@ void player::PlayerCore::OrientHandler(float dt)
 
     m_pEntity->SetWorldTM(etf);
     #pragma endregion
+}
+
+
+
+
+void player::PlayerCore::PlayerStateConditions()
+{
+    // health
+    (m_health <= m_healthMinValue)
+        ? m_isDied = true
+        : m_isDied = false;
+
+    // stamina
+    (m_stamina <= m_staminaMinValue)
+        ? m_isOutOfStamina = true
+        : m_isOutOfStamina = false;
+}
+
+
+void player::PlayerCore::PlayerSpawnConditions()
+{
+    Matrix34 spawnPointTranformation;
+
+    if (m_spawnOnCamera)
+    {
+        spawnPointTranformation = gEnv->pSystem->GetViewCamera().GetMatrix();
+    }
+    else
+    {
+        spawnPointTranformation = m_pEntity->GetWorldTM();
+    }
+
+    m_pEntity->SetWorldTM(spawnPointTranformation);
 }
