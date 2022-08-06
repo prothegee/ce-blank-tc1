@@ -32,6 +32,13 @@ add_sources("game_uber.cpp"
 		"game/Config.h"
 )
 
+add_sources("object_uber.cpp"
+    PROJECTS Game
+    SOURCE_GROUP "object"
+		"object/Rotator.cpp"
+		"object/Rotator.h"
+)
+
 add_sources("game_system_uber.cpp"
     PROJECTS Game
     SOURCE_GROUP "game/system"
