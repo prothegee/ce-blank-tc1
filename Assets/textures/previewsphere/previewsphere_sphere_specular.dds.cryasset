@@ -1,0 +1,10 @@
+<AssetMetadata version="0" type="Texture" guid="0322a599-cf15-d991-d751-c7d98e1e1072" source="previewsphere_sphere_specular.tif">
+ <Files>
+  <File path="previewsphere_sphere_specular.dds"/>
+ </Files>
+ <Details>
+  <Detail name="width">2048</Detail>
+  <Detail name="height">2048</Detail>
+  <Detail name="mipCount">10</Detail>
+ </Details>
+</AssetMetadata>
