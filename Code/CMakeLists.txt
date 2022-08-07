@@ -56,6 +56,7 @@ add_sources("tools_uber.cpp"
     PROJECTS Game
     SOURCE_GROUP "tools"
 		"tools/DateAndTime.h"
+        "tools/NetworkRequest.h"
 )
 
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/CVarOverrides.h")

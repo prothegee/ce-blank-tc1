@@ -34,3 +34,5 @@
 
 #include <CryPhysics/physinterface.h>
 #include <CryRenderer/IRenderAuxGeom.h>
+
+#include <CrySystem/ICryPlugin.h>
