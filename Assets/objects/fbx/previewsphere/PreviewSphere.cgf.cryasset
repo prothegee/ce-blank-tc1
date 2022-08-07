@@ -1,0 +1,14 @@
+<AssetMetadata version="0" type="Mesh" guid="fd236bb9-c6d5-4834-d96e-98d553218e93" source="PreviewSphere.fbx">
+ <Files>
+  <File path="PreviewSphere.cgf"/>
+ </Files>
+ <Details>
+  <Detail name="materialCount">3</Detail>
+  <Detail name="triangleCount">40370</Detail>
+  <Detail name="vertexCount">21355</Detail>
+  <Detail name="16BitPrecision">false</Detail>
+ </Details>
+ <Dependencies>
+  <Path usageCount="1">./PreviewSphere.mtl</Path>
+ </Dependencies>
+</AssetMetadata>
