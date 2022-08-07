@@ -1,9 +1,9 @@
 #include "game/Config.h"
 
 
-game::Config::Config(/* args */)
+ceblanktc1::game::Config::Config(/* args */)
 {
 }
-game::Config::~Config()
+ceblanktc1::game::Config::~Config()
 {
 }
