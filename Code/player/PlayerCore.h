@@ -1,10 +1,12 @@
 #pragma once
-#include "project.h"
+#include "ceblanktc1.h"
 #include "game/Config.h"
 #include "game/system/LevelManager.h"
 #include "tools/DateAndTime.h"
 
 
+namespace ceblanktc1
+{
 namespace player
 {
 
@@ -18,10 +20,8 @@ namespace player
  * - player logic/s
  * 
  */
-class PlayerCore
+class PlayerCore final
     :   public IEntityComponent
-    ,   game::Config
-    ,   tools::DateAndTime
 {
     // default value for player core
     struct DVPlayerCore
@@ -93,6 +93,13 @@ private:
 
     const float m_staminaReductionRate = 30.0f;
     const float m_staminaRegenerationRate = 15.0f;
+
+
+#pragma region internal
+    ceblanktc1::game::Config cfg; // game config
+    ceblanktc1::tools::DateAndTime dnt; // tools date and time
+    ceblanktc1::game::system::LevelManager lvlman; // lvl manager
+#pragma endregion
 
 private:
     // to determine to set some state of player
@@ -243,3 +250,4 @@ protected:
 
 
 } // namespace player
+} // namespace ceblanktc1
