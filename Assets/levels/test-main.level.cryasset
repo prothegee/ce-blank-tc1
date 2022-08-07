@@ -1,4 +1,4 @@
-<AssetMetadata version="0" type="Level" guid="7037d3c1-3174-7f9a-3ab5-02cc43e15866" source="" timestamp="1659698097">
+<AssetMetadata version="0" type="Level" guid="7037d3c1-3174-7f9a-3ab5-02cc43e15866" source="" timestamp="1659888095">
  <Files>
   <File path="test-main/test-main.level"/>
  </Files>
@@ -26,7 +26,13 @@
   <Path>%engine%/engineassets/textures/skys/night/half_moon.dds</Path>
   <Path>editor/resourcecache/textures/cubemaps/test-main/env-prob-night-01_cm.dds</Path>
   <Path>editor/resourcecache/textures/cubemaps/test-main/env-prob-night-01_cm_diff.dds</Path>
+  <Path>editor/resourcecache/textures/previewsphere/previewsphere_sphere_diffuse.dds</Path>
+  <Path>editor/resourcecache/textures/previewsphere/previewsphere_sphere_height.dds</Path>
+  <Path>editor/resourcecache/textures/previewsphere/previewsphere_sphere_normal.dds</Path>
+  <Path>editor/resourcecache/textures/previewsphere/previewsphere_sphere_specular.dds</Path>
   <Path usageCount="1">libs/environmentpresets/night-01-env.env</Path>
+  <Path>materials/previewsphere.mtl</Path>
+  <Path>objects/fbx/previewsphere/previewsphere.cgf</Path>
   <Path>textures/cubemaps/test-main/env-prob-night-01_cm.dds</Path>
   <Path>textures/cubemaps/test-main/env-prob-night-01_cm_diff.dds</Path>
  </Dependencies>

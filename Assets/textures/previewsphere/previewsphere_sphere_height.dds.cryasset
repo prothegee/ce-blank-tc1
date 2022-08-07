@@ -1,0 +1,10 @@
+<AssetMetadata version="0" type="Texture" guid="bdba6eac-f851-a860-1417-6dade8fae324" source="previewsphere_sphere_height.tif">
+ <Files>
+  <File path="previewsphere_sphere_height.dds"/>
+ </Files>
+ <Details>
+  <Detail name="width">2048</Detail>
+  <Detail name="height">2048</Detail>
+  <Detail name="mipCount">10</Detail>
+ </Details>
+</AssetMetadata>

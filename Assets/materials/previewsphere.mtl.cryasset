@@ -1,0 +1,15 @@
+<AssetMetadata version="0" type="Material" guid="a9295b6d-4e57-0d2f-3745-da749620650d" source="" timestamp="1659875612">
+ <Files>
+  <File path="previewsphere.mtl"/>
+ </Files>
+ <Details>
+  <Detail name="subMaterialCount">0</Detail>
+  <Detail name="textureCount">4</Detail>
+ </Details>
+ <Dependencies>
+  <Path usageCount="1">textures/previewsphere/previewsphere_sphere_diffuse.dds</Path>
+  <Path usageCount="1">textures/previewsphere/previewsphere_sphere_normal.dds</Path>
+  <Path usageCount="1">textures/previewsphere/previewsphere_sphere_specular.dds</Path>
+  <Path usageCount="1">textures/previewsphere/previewsphere_sphere_height.dds</Path>
+ </Dependencies>
+</AssetMetadata>

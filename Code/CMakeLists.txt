@@ -18,10 +18,10 @@ add_sources("Code_uber.cpp"
     PROJECTS Game
     SOURCE_GROUP "Root"
 		"GamePlugin.cpp"
-		"project.cpp"
+		"ceblanktc1.cpp"
 		"StdAfx.cpp"
 		"GamePlugin.h"
-		"project.h"
+		"ceblanktc1.h"
 		"StdAfx.h"
 )
 
@@ -30,6 +30,13 @@ add_sources("game_uber.cpp"
     SOURCE_GROUP "game"
 		"game/Config.cpp"
 		"game/Config.h"
+)
+
+add_sources("object_uber.cpp"
+    PROJECTS Game
+    SOURCE_GROUP "object"
+		"object/Rotator.cpp"
+		"object/Rotator.h"
 )
 
 add_sources("game_system_uber.cpp"

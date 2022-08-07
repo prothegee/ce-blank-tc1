@@ -5,21 +5,21 @@ static void RegistPlayerCore(Schematyc::IEnvRegistrar& registrar)
 {
     Schematyc::CEnvRegistrationScope scope = registrar.Scope(IEntity::GetEntityScopeGUID());
     {
-        Schematyc::CEnvRegistrationScope componentScope = scope.Register(SCHEMATYC_MAKE_ENV_COMPONENT(player::PlayerCore));
+        Schematyc::CEnvRegistrationScope componentScope = scope.Register(SCHEMATYC_MAKE_ENV_COMPONENT(ceblanktc1::player::PlayerCore));
     }
 }
 CRY_STATIC_AUTO_REGISTER_FUNCTION(&RegistPlayerCore);
-player::PlayerCore::PlayerCore(/* args */)
+ceblanktc1::player::PlayerCore::PlayerCore(/* args */)
 {
 }
-player::PlayerCore::~PlayerCore()
+ceblanktc1::player::PlayerCore::~PlayerCore()
 {
 }
 
 
 
 
-void player::PlayerCore::Initialize()
+void ceblanktc1::player::PlayerCore::Initialize()
 {
     m_pInput = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CInputComponent>();
     m_pCC = m_pEntity->GetOrCreateComponent<Cry::DefaultComponents::CCharacterControllerComponent>();
@@ -28,7 +28,7 @@ void player::PlayerCore::Initialize()
 }
 
 
-Cry::Entity::EventFlags player::PlayerCore::GetEventMask() const
+Cry::Entity::EventFlags ceblanktc1::player::PlayerCore::GetEventMask() const
 {
     return
         Cry::Entity::EEvent::GameplayStarted |
@@ -38,7 +38,7 @@ Cry::Entity::EventFlags player::PlayerCore::GetEventMask() const
 }
 
 
-void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
+void ceblanktc1::player::PlayerCore::ProcessEvent(const SEntityEvent& e)
 {
     switch (e.event)
     {
@@ -48,10 +48,9 @@ void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
             PlayerSpawnConditions();
 
             #ifndef NDEBUG
-            CryLog("# current map/level name: %s", game::system::LevelManager::GetCurrentLevel().c_str());
-            CryLog("# current time: %s", current_time_utc.c_str());
-            CryLog("# game version: v%s", GetProjectVersion());
-            CryLog("# spawn on camera: %s", m_spawnOnCamera ? "true" : "false");
+            CryLog("# version: v%s", cfg.GetProjectVersion());
+            CryLog("# current map: %s", lvlman.GetCurrentLevel().c_str());
+            CryLog("# current time: %s", dnt.current_time_utc.c_str());
             #else
             #endif
         }
@@ -84,7 +83,7 @@ void player::PlayerCore::ProcessEvent(const SEntityEvent& e)
 
 
 
-void player::PlayerCore::InitializePlayerInput()
+void ceblanktc1::player::PlayerCore::InitializePlayerInput()
 {
     #pragma region input register and binding
     // move forward
@@ -266,7 +265,7 @@ void player::PlayerCore::InitializePlayerInput()
 }
 
 
-void player::PlayerCore::ResetPlayerInput()
+void ceblanktc1::player::PlayerCore::ResetPlayerInput()
 {
     m_mouseDeltaRotation = ZERO;
     m_entityDeltaRotation = ZERO;
@@ -276,7 +275,7 @@ void player::PlayerCore::ResetPlayerInput()
 }
 
 
-void player::PlayerCore::HandleInputFlagChange(CEnumFlags<EInputFlag> flags, CEnumFlags<EActionActivationMode> activationMode, EInputFlagType type)
+void ceblanktc1::player::PlayerCore::HandleInputFlagChange(CEnumFlags<EInputFlag> flags, CEnumFlags<EActionActivationMode> activationMode, EInputFlagType type)
 {
     switch (type)
     {
@@ -307,7 +306,7 @@ void player::PlayerCore::HandleInputFlagChange(CEnumFlags<EInputFlag> flags, CEn
 
 
 
-void player::PlayerCore::GroundMovementHandler(float dt)
+void ceblanktc1::player::PlayerCore::GroundMovementHandler(float dt)
 {
     if (!m_pCC->IsOnGround()) { return; }
 
@@ -401,7 +400,7 @@ void player::PlayerCore::GroundMovementHandler(float dt)
 }
 
 
-void player::PlayerCore::OrientHandler(float dt)
+void ceblanktc1::player::PlayerCore::OrientHandler(float dt)
 {
     #pragma region camera v1 section
     // camera entity world tranformation
@@ -445,7 +444,7 @@ void player::PlayerCore::OrientHandler(float dt)
 
 
 
-void player::PlayerCore::PlayerStateConditions()
+void ceblanktc1::player::PlayerCore::PlayerStateConditions()
 {
     // health
     (m_health <= m_healthMinValue)
@@ -459,7 +458,7 @@ void player::PlayerCore::PlayerStateConditions()
 }
 
 
-void player::PlayerCore::PlayerSpawnConditions()
+void ceblanktc1::player::PlayerCore::PlayerSpawnConditions()
 {
     Matrix34 spawnPointTranformation;
 
@@ -476,7 +475,7 @@ void player::PlayerCore::PlayerSpawnConditions()
 }
 
 
-void player::PlayerCore::PlayerDataPolicies(float dt)
+void ceblanktc1::player::PlayerCore::PlayerDataPolicies(float dt)
 {
     // health
     if (m_health <= m_healthToRegenerate)

@@ -1,0 +1,62 @@
+<ObjectLayer>
+ <Layer Name="test" FullName="test" GUID="fdb45aa8-a9f4-5749-b27e-636d1abe9506" Hidden="0" Frozen="0" Expanded="0" Type="0" Exportable="1" ExportLayerPak="1" DefaultLoaded="0" HavePhysics="1" IsDefaultColor="1" Color="4671303" Timestamp="1659888092">
+  <LayerObjects>
+   <Object Type="EmptyEntity" Layer="test" LayerGUID="fdb45aa8-a9f4-5749-b27e-636d1abe9506" Id="7e03bb5f-0ce8-2c47-b909-9b1b1b70e22a" Name="previewsphere" Pos="61.207752,63.848595,33.712006" Rotate="0.70632243,0,0,0.70789027" Scale="1,1,1" ColorRGB="65535" UseCustomLevelLayerColor="0" MinSpec="0" MatLayersMask="0" OutdoorOnly="0" CastShadow="1" CastShadowMinspec="1" DynamicDistanceShadows="0" GIMode="0" LodRatio="100" ViewDistRatio="100" HiddenInGame="0" RecvWind="0" RenderNearest="0" NoStaticDecals="0" EntityClass="Entity" HasEntity="1">
+    <Properties />
+    <Components>
+     <Component CryXmlVersion="2" TypeGUID="6ddd0033-6aaa-4b71-b8ea-108258205e29" TypeName="Cry::DefaultComponents::CStaticMeshComponent" GUID="362dd362-0a88-e6bb-7bc4-b8739f6a46be" Name="" UserAdded="true">
+      <Transform>
+       <translation>
+        <position>
+         <element element="0"/>
+         <element element="0"/>
+         <element element="0"/>
+        </position>
+       </translation>
+       <rotation x="0" y="-0" z="0"/>
+       <scale>
+        <element element="46.357922"/>
+        <element element="46.357922"/>
+        <element element="46.357922"/>
+       </scale>
+      </Transform>
+      <properties Type="RenderAndCollider" FilePath="objects/fbx/previewsphere/PreviewSphere.cgf" Material="materials/previewsphere.mtl">
+       <IEditorEntityComponent />
+       <Render ShadowSpec="VeryHigh" IgnoreVisArea="false" IgnoreTerrainLayerBlend="false" IgnoreDecalBlend="false" ViewDistRatio="100" LODDistance="100" GIMode="None"/>
+       <Physics WeightType="EWeightType::Mass" Density="9.9999997e-05" Mass="10"/>
+      </properties>
+     </Component>
+     <Component CryXmlVersion="2" TypeGUID="912c6ce8-56f7-4ffa-9134-f98d4e307bd6" TypeName="Cry::DefaultComponents::CRigidBodyComponent" GUID="bae30b40-1320-df45-b374-b364d58418f8" Name="" UserAdded="true">
+      <properties Networked="false" EnabledByDefault="true" Resting="false" Type="Static" SendCollisionSignal="false">
+       <Buoyancy Damping="0" Density="1000" Resistance="1000"/>
+       <Simulation MaxTimeStep="0.02" SleepSpeed="0.039999999" Damping="0"/>
+      </properties>
+     </Component>
+     <Component CryXmlVersion="2" TypeGUID="106facad-4099-4993-a9cc-f558a8586307" TypeName="Cry::DefaultComponents::CSpherePrimitiveComponent" GUID="c840d86c-8aed-c950-1651-e97226b30fdf" Name="" UserAdded="true">
+      <Transform>
+       <translation>
+        <position>
+         <element element="0"/>
+         <element element="0"/>
+         <element element="0"/>
+        </position>
+       </translation>
+       <rotation x="0" y="-0" z="0"/>
+       <scale>
+        <element element="1"/>
+        <element element="1"/>
+        <element element="1"/>
+       </scale>
+      </Transform>
+      <properties Radius="1" Surface="" ReactToCollisions="true">
+       <Physics WeightType="EWeightType::Mass" Density="9.9999997e-05" Mass="10"/>
+      </properties>
+     </Component>
+     <Component CryXmlVersion="2" TypeGUID="ca5633c2-6aca-4c93-9598-c3fd83efc110" TypeName="ceblanktc1::object::Rotator" GUID="476829b8-7659-a839-9b55-72e7b78279c6" Name="" UserAdded="true">
+      <properties object-is-rotating="false" object-rotation-x="0" object-rotation-y="0" object-rotation-z="1"/>
+     </Component>
+    </Components>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

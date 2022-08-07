@@ -1,7 +1,9 @@
 #pragma once
-#include "project.h"
+#include "ceblanktc1.h"
 
 
+namespace ceblanktc1
+{
 namespace game
 {
 namespace system
@@ -30,3 +32,4 @@ public:
 
 } // namespace system
 } // namespace game
+} // namespace ceblanktc1

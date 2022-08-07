@@ -456,6 +456,7 @@ $RECYCLE.BIN/
 
 ## internal
 ### directories
+[Cc]ode/.vscode
 [Cc]ode/[Bb]uild
 [Cc]ode/[Bb]in
 [Ee]ditor

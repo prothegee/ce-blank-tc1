@@ -1,7 +1,9 @@
 #pragma once
-#include "project.h"
+#include "ceblanktc1.h"
 
 
+namespace ceblanktc1
+{
 namespace tools
 {
 
@@ -134,3 +136,4 @@ public:
 
 
 } // namespace tools
+} // namespace ceblanktc1
