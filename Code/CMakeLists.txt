@@ -170,4 +170,12 @@ endif()
 
 #BEGIN-CUSTOM
 # Make any custom changes here, modifications outside of the block will be discarded on regeneration.
+
+# libcpr
+find_package(cpr CONFIG REQUIRED)
+target_link_libraries(${THIS_PROJECT} PRIVATE cpr::cpr)
+
+# jsoncpp
+find_package(jsoncpp CONFIG REQUIRED)
+target_link_libraries(${THIS_PROJECT} PRIVATE jsoncpp_lib jsoncpp_object JsonCpp::JsonCpp)
 #END-CUSTOM

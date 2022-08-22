@@ -4,10 +4,10 @@
   <extensions />
   <children>
    <element elementType="Constructor" guid="1644705b-3a24-4fd5-8ded-3e079c76e96b" name="ConstructionGraph" Schematyc::EMPEnv="clientserver">
-    <userDocumentation author="sf-victus-01" description=""/>
+    <userDocumentation author="prothegee" description=""/>
     <extensions>
      <Graph>
-      <pos x="0" y="0"/>
+      <pos x="283" y="71"/>
       <nodes>
        <element key="79937aaa-896f-4496-956c-84bb92db7ec2" typeGUID="12bdfa06-ba95-4e48-bb2d-bb48a7080abc">
         <value guid="79937aaa-896f-4496-956c-84bb92db7ec2">
@@ -21,26 +21,26 @@
     <children />
    </element>
    <element elementType="SignalReceiver" guid="7572f114-1169-4b34-8bfa-4efaceee9548" name="SignalGraph" Schematyc::EMPEnv="clientserver" type="Universal" signalGUID="">
-    <userDocumentation author="sf-victus-01" description=""/>
+    <userDocumentation author="prothegee" description=""/>
     <extensions>
      <Graph>
-      <pos x="0" y="0"/>
+      <pos x="18" y="-5"/>
       <nodes>
        <element key="eb8c2dee-ce7d-41d2-bf2b-f17f30dcc300" typeGUID="ad2aee64-0a60-4469-8ec7-38b4b720d30c">
         <value guid="eb8c2dee-ce7d-41d2-bf2b-f17f30dcc300" objectGUID="">
-         <pos x="0" y="200"/>
+         <pos x="-422" y="30"/>
          <signalId domain="Env" guid="b2561caa-0753-458b-a91f-e8e38b0f0cdf"/>
         </value>
        </element>
        <element key="ca06b85b-8cca-458f-81dd-e0cf2a1b2bae" typeGUID="ad2aee64-0a60-4469-8ec7-38b4b720d30c">
         <value guid="ca06b85b-8cca-458f-81dd-e0cf2a1b2bae" objectGUID="">
-         <pos x="0" y="0"/>
+         <pos x="-422" y="-170"/>
          <signalId domain="Env" guid="a9279137-7c66-491d-b9a0-8752c24c8979"/>
         </value>
        </element>
        <element key="2716862c-7e3c-496b-8893-feab5af90030" typeGUID="ad2aee64-0a60-4469-8ec7-38b4b720d30c">
         <value guid="2716862c-7e3c-496b-8893-feab5af90030" objectGUID="">
-         <pos x="0" y="100"/>
+         <pos x="-422" y="-70"/>
          <signalId domain="Env" guid="52ad5add-7781-429b-b4a9-0cb6c905e353"/>
         </value>
        </element>
